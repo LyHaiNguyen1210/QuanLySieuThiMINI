@@ -34,16 +34,21 @@
 ---
 
 ## 📁 Cấu trúc dự án
+
+```
 QuanLySieuThiMINI/
-├── 📂 Model/ # Tầng dữ liệu (Entities, Database)
-├── 📂 View/ # Tầng giao diện (Windows, UserControls)
-├── 📂 ViewModel/ # Tầng logic nghiệp vụ (MVVM)
-├── 📂 Images/ # Hình ảnh, icon
-├── 📂 Report/ # Báo cáo, in ấn
-├── 📂 Properties/ # Cấu hình dự án
-├── 📄 App.xaml # Cấu hình ứng dụng
+├── 📂 Model/          # Tầng dữ liệu (Entities, Database)
+├── 📂 View/           # Tầng giao diện (Windows, UserControls)
+├── 📂 ViewModel/      # Tầng logic nghiệp vụ (MVVM)
+├── 📂 Images/         # Hình ảnh, icon
+├── 📂 Report/         # Báo cáo, in ấn
+├── 📂 Properties/     # Cấu hình dự án
+├── 📄 App.xaml        # Cấu hình ứng dụng
 ├── 📄 packages.config # NuGet packages
-└── 📄 README.md # Tài liệu dự án
+└── 📄 README.md       # Tài liệu dự án
+```
+
+---
 
 ## 🚀 Hướng dẫn cài đặt
 
@@ -55,7 +60,46 @@ QuanLySieuThiMINI/
 
 ### Các bước chạy project
 
-1️⃣ **Clone repository**
+**1️⃣ Clone repository**
 ```bash
 git clone https://github.com/LyHaiNguyen1210/QuanLySieuThiMINI.git
 cd QuanLySieuThiMINI
+```
+
+**2️⃣ Mở solution bằng Visual Studio**
+```bash
+start QuanLySieuThiMINI.slnx
+```
+
+**3️⃣ Khôi phục NuGet packages**
+```bash
+dotnet restore
+```
+
+**4️⃣ Cập nhật connection string**  
+Sửa file `App.config` với thông tin SQL Server của bạn
+
+**5️⃣ Chạy ứng dụng**
+```bash
+dotnet run --project QuanLySieuThiMINI.csproj
+```
+Hoặc nhấn **F5** trong Visual Studio.
+
+---
+
+## 👤 Tài khoản đăng nhập mặc định
+
+| Username | Password | Role |
+|----------|----------|------|
+| `admin` | `123456` | Quản trị viên |
+| `staff` | `123456` | Nhân viên |
+
+---
+
+## 📧 Liên hệ
+
+- **GitHub**: [@LyHaiNguyen1210](https://github.com/LyHaiNguyen1210)
+
+---
+
+⭐ **Nếu bạn thấy dự án hữu ích, hãy để lại một star nhé!** ⭐
