@@ -1,105 +1,135 @@
 # 🏪 Quản Lý Siêu Thị MINI
 
-[![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)](https://dotnet.microsoft.com/)
-[![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/csharp/)
-[![WPF](https://img.shields.io/badge/WPF-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/)
-[![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)](https://www.microsoft.com/en-us/sql-server/)
+![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![WPF](https://img.shields.io/badge/WPF-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
+![VS2022](https://img.shields.io/badge/VS%202022-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white)
 
-> Phần mềm quản lý siêu thị mini được xây dựng bằng **WPF** và **C#** với kiến trúc **MVVM**.
-
----
-
-## ✨ Tính năng nổi bật
-
-- 🔐 **Đăng nhập/Đăng xuất** an toàn
-- 📦 **Quản lý sản phẩm** (Thêm, Sửa, Xóa, Tìm kiếm)
-- 👥 **Quản lý nhân viên** với phân quyền
-- 🧾 **Quản lý hóa đơn** và bán hàng
-- 📊 **Báo cáo thống kê** doanh thu, tồn kho
-- 💾 **Kết nối SQL Server** lưu trữ dữ liệu
-- 🌓 **Giao diện hiện đại**, thân thiện
+> 🚀 Phần mềm quản lý siêu thị mini - WPF + C# + MVVM + SQL Server
 
 ---
 
-## 🛠️ Công nghệ sử dụng
+## ✨ Tính năng
 
-| Công nghệ | Mô tả |
+| Chức năng | Mô tả |
 |-----------|-------|
-| **.NET Framework 4.7.2** | Nền tảng phát triển |
-| **WPF** | Xây dựng giao diện |
-| **MVVM Pattern** | Kiến trúc phân tách logic |
-| **SQL Server** | Quản lý cơ sở dữ liệu |
-| **Entity Framework** | ORM kết nối database |
+| 🔐 Đăng nhập | Xác thực người dùng, phân quyền |
+| 📦 Quản lý mặt hàng | Thêm, sửa, xóa, tìm kiếm sản phẩm |
+| 👥 Quản lý nhân viên | Quản lý thông tin nhân viên |
+| 🧾 Quản lý hóa đơn | Tạo và quản lý hóa đơn bán hàng |
+| 📊 Quản lý nhập hàng | Nhập kho, quản lý tồn kho |
+| 💰 Bán hàng | Giao diện bán hàng nhanh |
+| 📈 Báo cáo thống kê | Doanh thu, tồn kho |
+| 🖨️ In hóa đơn | Xuất báo cáo RDLC |
 
 ---
 
-## 📁 Cấu trúc dự án
+## 🛠️ Công nghệ
+
+- .NET Framework 4.7.2
+- Visual Studio 2022
+- WPF + MVVM
+- SQL Server 2019
+- Entity Framework
+- RDLC Report
+
+---
+
+## 📁 Cấu trúc thư mục
 
 ```
 QuanLySieuThiMINI/
-├── 📂 Model/          # Tầng dữ liệu (Entities, Database)
-├── 📂 View/           # Tầng giao diện (Windows, UserControls)
-├── 📂 ViewModel/      # Tầng logic nghiệp vụ (MVVM)
-├── 📂 Images/         # Hình ảnh, icon
-├── 📂 Report/         # Báo cáo, in ấn
-├── 📂 Properties/     # Cấu hình dự án
-├── 📄 App.xaml        # Cấu hình ứng dụng
-├── 📄 packages.config # NuGet packages
-└── 📄 README.md       # Tài liệu dự án
+├── Model/              # Entities + Database
+├── View/               # Giao diện XAML
+├── ViewModel/          # Logic nghiệp vụ
+├── Images/             # Ảnh, icon
+├── Report/             # Báo cáo RDLC
+├── Database/           # Script SQL (chứa file .sql)
+├── Properties/         # Cấu hình
+├── App.config          # Connection string
+└── README.md           # Hướng dẫn
 ```
 
 ---
 
-## 🚀 Hướng dẫn cài đặt
+## 🗄️ Database
 
-### Yêu cầu hệ thống
-- Windows 7/8/10/11
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework)
-- [SQL Server 2019+](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
-- [Visual Studio 2019+](https://visualstudio.microsoft.com/)
+Database `QuanLySieuThiMini` gồm 14 bảng:
 
-### Các bước chạy project
+| Bảng | Mô tả |
+|------|-------|
+| `ChucVu` | Chức vụ nhân viên |
+| `NhanVien` | Thông tin nhân viên |
+| `KhachHang` | Thông tin khách hàng |
+| `MatHang` | Quản lý mặt hàng (100 sản phẩm) |
+| `HoaDonTam` | Hóa đơn tạm thời |
+| `HoaDonBanHang` | Hóa đơn bán hàng |
+| `ChiTietBanHang` | Chi tiết hóa đơn |
+| `NhaCungCap` | Nhà cung cấp |
+| `NhapHang` | Phiếu nhập hàng |
+| `ChiTietNhapHang` | Chi tiết nhập hàng |
+| `HuyHang` | Hàng bị hủy |
+| `HangSapHetHan` | Hàng sắp hết hạn |
+| `TaiKhoanDangNhap` | Tài khoản đăng nhập |
+| `ChiTietHoaDonTam` | Chi tiết hóa đơn tạm |
 
-**1️⃣ Clone repository**
+> 📄 Script database có sẵn trong thư mục `Database/QuanLySieuThiMini.sql`
+
+---
+
+## 🚀 Hướng dẫn clone và chạy
+
+### 1. Clone repository
+
 ```bash
 git clone https://github.com/LyHaiNguyen1210/QuanLySieuThiMINI.git
 cd QuanLySieuThiMINI
 ```
 
-**2️⃣ Mở solution bằng Visual Studio**
-```bash
-start QuanLySieuThiMINI.slnx
+### 2. Mở project
+
+Double-click file **`QuanLySieuThiMINI.slnx`** để mở bằng Visual Studio 2022.
+
+### 3. Restore NuGet
+
+**Tools → NuGet Package Manager → Restore Packages**
+
+### 4. Tạo database
+
+- Mở **SQL Server Management Studio (SSMS)**
+- Kết nối SQL Server
+- Mở file `Database/QuanLySieuThiMini.sql`
+- Nhấn **F5** chạy script
+
+### 5. Cập nhật Connection String (nếu cần)
+
+Sửa file `App.config` theo cấu hình SQL Server của bạn:
+
+```xml
+<connectionStrings>
+    <add name="QuanLySieuThiMiniEntities" 
+         connectionString="metadata=res://*/Model.QLST.csdl|res://*/Model.QLST.ssdl|res://*/Model.QLST.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DESKTOP-KSHJGVN\SQLEXPRESS;initial catalog=QuanLySieuThiMini;persist security info=True;user id=sa;password=123;trustservercertificate=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
+         providerName="System.Data.EntityClient" />
+</connectionStrings>
 ```
 
-**3️⃣ Khôi phục NuGet packages**
-```bash
-dotnet restore
-```
+### 6. Chạy chương trình
 
-**4️⃣ Cập nhật connection string**  
-Sửa file `App.config` với thông tin SQL Server của bạn
-
-**5️⃣ Chạy ứng dụng**
-```bash
-dotnet run --project QuanLySieuThiMINI.csproj
-```
-Hoặc nhấn **F5** trong Visual Studio.
+Nhấn **F5** trong Visual Studio 2022.
 
 ---
 
-## 👤 Tài khoản đăng nhập mặc định
+## 👤 Tài khoản đăng nhập
 
-| Username | Password | Role |
-|----------|----------|------|
-| `admin` | `123456` | Quản trị viên |
-| `staff` | `123456` | Nhân viên |
-
----
-
-## 📧 Liên hệ
-
-- **GitHub**: [@LyHaiNguyen1210](https://github.com/LyHaiNguyen1210)
+| Username | Password | Vai trò |
+|----------|----------|---------|
+| `admin` | `123` | Quản lý |
+| `thungan` | `123` | Thu ngân |
+| `kho` | `123` | Kho |
+| `banhang` | `123` | Bán hàng |
 
 ---
 
-⭐ **Nếu bạn thấy dự án hữu ích, hãy để lại một star nhé!** ⭐
+
+⭐ **Star ủng hộ nếu thấy hữu ích!** ⭐
