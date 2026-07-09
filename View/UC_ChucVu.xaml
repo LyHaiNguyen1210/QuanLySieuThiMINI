@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="QuanLySieuThiMINI.View.UC_ChucVu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Column="0" ItemsSource="{Binding dscv}" SelectedItem="{Binding SelectedCV}" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,0,10,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Chức Vụ" Width="150" Binding="{Binding MaChucVu}"/>
+                <DataGridTextColumn Header="Tên Chức Vụ" Width="*" Binding="{Binding TenChucVu}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="1">
+            <Border Background="#FDF2E9" Padding="15" CornerRadius="8">
+                <StackPanel Grid.Column="1">
+                    <Border Background="#FDF2E9" Padding="15" CornerRadius="8">
+                        <StackPanel>
+                            <TextBlock Text="QUẢN LÝ CHỨC VỤ" FontWeight="Bold" Foreground="#E67E22" Margin="0,0,0,10"/>
+
+                            <TextBlock Text="Mã chức vụ (*):"/>
+                            <TextBox Height="30" Text="{Binding SelectedCV.MaChucVu, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                            <TextBlock Text="Tên chức vụ (*):"/>
+                            <TextBox Height="30" Text="{Binding SelectedCV.TenChucVu, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                            <Button Content="➕ Thêm Chức Vụ" Command="{Binding AddCommand}" Height="35" Background="#E67E22" Foreground="White" BorderThickness="0" Margin="0,10,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</UserControl>

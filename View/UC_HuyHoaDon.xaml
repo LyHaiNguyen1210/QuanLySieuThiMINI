@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="QuanLySieuThiMINI.View.UC_HuyHoaDon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLySieuThiMINI.View"
+             xmlns:vm="clr-namespace:QuanLySieuThiMINI.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="HuyHDControl">
+    <UserControl.DataContext>
+        <vm:HuyHoaDonViewModel/>
+    </UserControl.DataContext>
+
+    <UserControl.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#E3F2FD" Offset="0.0" />
+            <GradientStop Color="White" Offset="1.0" />
+        </LinearGradientBrush>
+    </UserControl.Background>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="LẬP PHIẾU HỦY MẶT HÀNG LỖI" FontSize="22" FontWeight="Bold" Foreground="#D32F2F" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15" HorizontalAlignment="Center">
+            <TextBlock Text="Nhập Mã HĐ:" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Margin="0,0,10,0"/>
+            <TextBox Text="{Binding TuKhoaHD, UpdateSourceTrigger=PropertyChanged}" Width="200" Height="30" FontSize="14" Padding="5,0"/>
+            <Button Content="🔍 Tải Hóa Đơn" Command="{Binding TimKiemCommand}" Width="120" Height="30" Margin="10,0,0,0" 
+                    Background="#1976D2" Foreground="White" FontWeight="Bold" Cursor="Hand">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <GroupBox Grid.Row="2" Header="Bước 1: Click chọn mặt hàng bị lỗi cần hủy" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,15">
+            <DataGrid ItemsSource="{Binding DSChiTiet}" 
+                      SelectedItem="{Binding SelectedChiTiet, Mode=TwoWay}"
+                      AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" 
+                      SelectionMode="Single" RowHeight="32" Background="White"
+                      BorderBrush="#BDC3C7" BorderThickness="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã MH" Binding="{Binding MaMH}" Width="100"/>
+                    <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong}" Width="90"/>
+                    <DataGridTextColumn Header="Giảm Giá" Binding="{Binding GiamGia, StringFormat={}{0:N0} đ}" Width="100"/>
+                    <DataGridTextColumn Header="Thành Tiền" Binding="{Binding ThanhTien, StringFormat={}{0:N0} đ}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="Bước 2: Ghi nhận tình trạng lỗi" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,20">
+            <StackPanel Margin="10">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Trạng thái xử lý:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <ComboBox SelectedIndex="{Binding TrangThaiXuLyIndex, Mode=TwoWay}" Width="200" Height="30" Padding="5,0">
+                        <ComboBoxItem Content="⏳ Chờ quản lý duyệt" />
+                        <ComboBoxItem Content="✅ Đã xử lý / Đã duyệt" />
+                    </ComboBox>
+                </StackPanel>
+
+                <TextBlock Text="Mô tả chi tiết lỗi (Bắt buộc):" Margin="0,0,0,5"/>
+                <TextBox Text="{Binding LyDoHuy, UpdateSourceTrigger=PropertyChanged}" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Padding="5"
+                         ToolTip="Ví dụ: Hộp bị móp méo, rách bao bì do vận chuyển, hết hạn..."/>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,20">
+            <TextBlock Text="Tổng tiền HĐ hiện tại: " FontSize="16" FontWeight="SemiBold"/>
+            <TextBlock Text="{Binding HoaDonHienTai.TongTien, StringFormat={}{0:N0} đ, FallbackValue=0 đ}" FontSize="16" FontWeight="Bold" Foreground="#27AE60"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Làm Mới Form" Command="{Binding DongCommand}" 
+                    CommandParameter="{Binding ElementName=HuyHDControl}"
+                    Width="120" Height="38" Background="#95A5A6" Foreground="White" FontWeight="Bold" Margin="0,0,15,0" Cursor="Hand">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Content="Loại Sản Phẩm &amp; Lập Phiếu" Command="{Binding XacNhanHuyCommand}" 
+                    CommandParameter="{Binding ElementName=HuyHDControl}"
+                    Width="220" Height="38" Background="#E74C3C" Foreground="White" FontWeight="Bold" Cursor="Hand">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

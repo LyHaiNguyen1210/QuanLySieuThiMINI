@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="QuanLySieuThiMINI.View.UC_NhanVien"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:QuanLySieuThiMINI.ViewModel"
+             Background="White">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Tag="Nhập tên hoặc mã nhân viên..." Height="35" VerticalContentAlignment="Center" Padding="10,0" BorderBrush="#2C3E50" Margin="0,0,0,10"/>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding dsnv}" SelectedItem="{Binding SelectedNV}" AutoGenerateColumns="False" CanUserAddRows="False" BorderBrush="#2C3E50" BorderThickness="1" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã NV" Width="80" Binding="{Binding MaNV}"/>
+                <DataGridTextColumn Header="Họ Tên" Width="2*" Binding="{Binding TenNV}"/>
+                <DataGridTextColumn Header="Giới Tính" Width="2*" Binding="{Binding GioiTinh}"/>
+                <DataGridTextColumn Header="Ngày sinh" Width="2*" Binding="{Binding NgaySinh}"/>
+                <DataGridTextColumn Header="Chức Vụ" Width="120" Binding="{Binding MaChucVu}"/>
+                <DataGridTextColumn Header="Số Điện Thoại" Width="120" Binding="{Binding SDT}"/>
+                <DataGridTextColumn Header="CCCD" Width="150" Binding="{Binding CCCD}"/>
+                <DataGridTextColumn Header="Địa chỉ" Width="150" Binding="{Binding DiaChi}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="2" Background="#F2F4F4" CornerRadius="8" Padding="15" BorderBrush="#BDC3C7" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="THÔNG TIN CHI TIẾT NHÂN VIÊN" FontSize="18" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,15"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <TextBlock Text="Mã nhân viên (*):" FontWeight="Bold" Foreground="#E74C3C"/>
+                        <TextBox Height="30" Text="{Binding SelectedNV.MaNV, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Họ tên:"/>
+                        <TextBox Height="30" Text="{Binding SelectedNV.TenNV, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Ngày sinh:"/>
+                        <DatePicker Height="30" SelectedDate="{Binding SelectedNV.NgaySinh, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                        <TextBlock Text="Số điện thoại:"/>
+                        <TextBox Height="30" Text="{Binding SelectedNV.SDT, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Địa chỉ:"/>
+                        <TextBox Height="30" Text="{Binding SelectedNV.DiaChi, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Chức vụ (*):" FontWeight="Bold"/>
+                        <ComboBox Height="30" Margin="0,5"
+                                  ItemsSource="{Binding dscv}" 
+                                  DisplayMemberPath="TenChucVu" 
+                                  SelectedValuePath="MaChucVu" 
+                                  SelectedValue="{Binding SelectedNV.MaChucVu, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="CCCD:"/>
+                        <TextBox Height="30" Text="{Binding SelectedNV.CCCD, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Giới tính:"/>
+                        <ComboBox Height="30" Text="{Binding SelectedNV.GioiTinh, UpdateSourceTrigger=PropertyChanged}" Margin="0,5">
+                            <ComboBoxItem Content="Nam"/>
+                            <ComboBoxItem Content="Nữ"/>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                    <Button Content="➕ Thêm" Command="{Binding AddCommand}" Width="100" Height="35" Background="#27AE60" Foreground="White" BorderThickness="0" Margin="0,0,10,0"/>
+                    <Button Content="❌ Xóa" Command="{Binding DeleteCommand}" Width="100" Height="35" Background="#E74C3C" Foreground="White" BorderThickness="0" Margin="0,0,10,0"/>
+                    <Button Content="🔄 Cập nhật" Command="{Binding UpdateCommand}" Width="120" Height="35" Background="#2980B9" Foreground="White" BorderThickness="0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

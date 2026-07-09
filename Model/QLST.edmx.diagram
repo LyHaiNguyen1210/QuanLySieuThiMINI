@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e0ed938fcb74c43849a1ae877bd824e" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.ChiTietBanHang" Width="1.5" PointX="19" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.ChiTietHoaDonTam" Width="1.5" PointX="21.875" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.ChiTietNhapHang" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.ChucVu" Width="1.5" PointX="9.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.HangSapHetHan" Width="1.5" PointX="18.625" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.HoaDonBanHang" Width="1.5" PointX="21.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.HoaDonTam" Width="1.5" PointX="17.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.HuyHang" Width="1.5" PointX="12" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.KhachHang" Width="1.5" PointX="12" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.MatHang" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.NhaCungCap" Width="1.5" PointX="14.375" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.NhanVien" Width="1.5" PointX="6.375" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.NhapHang" Width="1.5" PointX="14.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLySieuThiMiniModel.TaiKhoanDangNhap" Width="1.5" PointX="7.625" PointY="14.25" IsExpanded="true" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_CTBH_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_CTBH_MatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_CTHDT_HoaDonTam" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_CTHDT_MatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_CTNhapHang_MH" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_CTNhapHang_NH" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_NhanVien_ChucVu" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_HSHH_MH" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_HDBH_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_HDBH_NhanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_HuyHang_MH" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_NhapHang_NCC" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_NhapHang_NV" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLySieuThiMiniModel.FK_TK_NV" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
