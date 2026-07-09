@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D525A683-E554-4AA3-8D6E-AFCCDE7116C2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QuanLySieuThiMINI</RootNamespace>
+    <AssemblyName>QuanLySieuThiMINI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="sapbusinessobjects.wpf.viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Model\ChiTietBanHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChiTietHoaDonTam.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChiTietNhapHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChucVu.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GioHangItem.cs" />
+    <Compile Include="Model\HangSapHetHan.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HoaDonBanHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HoaDonTam.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HuyHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\KhachHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MatHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NhaCungCap.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NhanVien.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NhapHang.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\QLST.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLST.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\QLST.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\QLST.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLST.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TaiKhoanDangNhap.cs">
+      <DependentUpon>QLST.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Report\HoaDonCK.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HoaDonCK.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\NhapHangRP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NhapHangRP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewModel\BanHang_ViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\ChucVuViewModel.cs" />
+    <Compile Include="ViewModel\DangNhapViewModel.cs" />
+    <Compile Include="ViewModel\HuyHoaDonViewModel.cs" />
+    <Compile Include="ViewModel\LocMatHang.cs" />
+    <Compile Include="ViewModel\LuuDangNhap.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NhanVienViewModel.cs" />
+    <Compile Include="ViewModel\QL_KhachHang.cs" />
+    <Compile Include="ViewModel\QL_NhanSu.cs" />
+    <Compile Include="ViewModel\QL_NhapHang.cs" />
+    <Compile Include="ViewModel\QL_CanDate.cs" />
+    <Compile Include="ViewModel\QL_HoaDon.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\QL_MatHang.cs" />
+    <Compile Include="ViewModel\TaiKhoanViewModel.cs" />
+    <Compile Include="ViewModel\TrangChuViewModel.cs" />
+    <Compile Include="View\HoaDonReportView.xaml.cs">
+      <DependentUpon>HoaDonReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NhapHangReportView.xaml.cs">
+      <DependentUpon>NhapHangReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLyMatHangView.xaml.cs">
+      <DependentUpon>QuanLyMatHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TrangChuView.xaml.cs">
+      <DependentUpon>TrangChuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DangNhapView.xaml.cs">
+      <DependentUpon>DangNhapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLySieuThiMINIView.xaml.cs">
+      <DependentUpon>QuanLySieuThiMINIView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\UC_CanDate.xaml.cs">
+      <DependentUpon>UC_CanDate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_ChiTietMatHang.xaml.cs">
+      <DependentUpon>UC_ChiTietMatHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_ChucVu.xaml.cs">
+      <DependentUpon>UC_ChucVu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_HoaDon.xaml.cs">
+      <DependentUpon>UC_HoaDon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_HuyHoaDon.xaml.cs">
+      <DependentUpon>UC_HuyHoaDon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_MatHang.xaml.cs">
+      <DependentUpon>UC_MatHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_NhanVien.xaml.cs">
+      <DependentUpon>UC_NhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_NhapHang.xaml.cs">
+      <DependentUpon>UC_NhapHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UC_TaiKhoan.xaml.cs">
+      <DependentUpon>UC_TaiKhoan.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\HoaDonReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NhapHangReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLyMatHangView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TrangChuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DangNhapView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLySieuThiMINIView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_CanDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_ChiTietMatHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_ChucVu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_HoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_HuyHoaDon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_MatHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_NhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_NhapHang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UC_TaiKhoan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\HoaDonCK.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>HoaDonCK.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\NhapHangRP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NhapHangRP.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\QLST.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLST.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\QLST.edmx.diagram">
+      <DependentUpon>QLST.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MaQR_ThanhToan.jpg" />
+    <Content Include="Model\QLST.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLST.edmx</DependentUpon>
+      <LastGenOutput>QLST.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\QLST.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLST.edmx</DependentUpon>
+      <LastGenOutput>QLST.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>
