@@ -1,0 +1,198 @@
+﻿<Window x:Class="QuanLySieuThiMINI.View.QuanLyMatHangView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:QuanLySieuThiMINI.ViewModel"
+        xmlns:view="clr-namespace:QuanLySieuThiMINI.View"
+        Title="Hệ Thống Quản Lý Siêu Thị Mini"
+        Height="800"
+        Width="1300"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="SideMenuButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="20,0,0,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#34495E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate DataType="{x:Type vm:QL_MatHang}">
+            <view:UC_MatHang/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:QL_NhapHang}">
+            <view:UC_NhapHang/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:QL_CanDate}">
+            <view:UC_CanDate/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:QL_HoaDon}">
+            <view:UC_HoaDon/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:QL_NhanSu}">
+            <view:UC_NhanVien/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#006699">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="15,0,0,0">
+                <Button Width="30"
+                        Height="30"
+                        Command="{Binding QuayLaiTrangChuCommand}"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        ToolTip="Quay lại">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="#4EB5E6" CornerRadius="15">
+                                <TextBlock Text="❮"
+                                           Foreground="White"
+                                           FontSize="16"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,2,0"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <TextBlock Text="HỆ THỐNG QUẢN LÝ SIÊU THỊ"
+                           Foreground="White"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Margin="10,0,20,0"/>
+            </StackPanel>
+
+            <Border Grid.Column="1" Background="#0082C8" Padding="20,0">
+                <TextBlock Text="{Binding VaiTro}"
+                           Foreground="White"
+                           FontSize="14"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <TabControl Grid.Row="1" Background="White" BorderThickness="0,1,0,0">
+
+            <TabItem Header="📦 KHO HÀNG" Width="150" Height="40">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Background="#1F3A5F">
+                        <StackPanel>
+                            <TextBlock Text="DANH MỤC HÀNG"
+                                       Foreground="#4EB5E6"
+                                       Margin="15,15,0,10"
+                                       FontSize="12"
+                                       FontWeight="Bold"/>
+
+                            <Button Style="{StaticResource SideMenuButtonStyle}"
+                                    Content="Tất cả mặt hàng"
+                                    Command="{Binding ChuyenViewCommand}"
+                                    CommandParameter="{Binding MatHangVM}"/>
+
+                            <Separator Background="#2C4A73" Margin="10"/>
+
+                            <Button Style="{StaticResource SideMenuButtonStyle}"
+                                    Content="Nhập kho"
+                                    Command="{Binding ChuyenViewCommand}"
+                                    CommandParameter="{Binding NhapHangVM}"/>
+
+                            <Button Style="{StaticResource SideMenuButtonStyle}"
+                                    Content="Kiểm kê cận date"
+                                    Command="{Binding ChuyenViewCommand}"
+                                    CommandParameter="{Binding CanDateVM}"/>
+
+                            <Button Style="{StaticResource SideMenuButtonStyle}"
+                                    Content="Tra cứu hóa đơn" 
+                                    Command="{Binding ChuyenViewCommand}"
+                                    CommandParameter="{Binding HoaDonVM}"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="1" Background="#F4F6F9" Padding="10">
+                        <ContentControl Content="{Binding CurrentView}"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="👥 NHÂN SỰ" Width="150" Height="40" IsEnabled="{Binding CanQuanLyNhanSu}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Background="#2C3E50">
+                        <StackPanel>
+                            <TextBlock Text="QUẢN TRỊ NHÂN VIÊN"
+               Foreground="#1ABC9C"
+               Margin="15,15,0,10"
+               FontSize="12"
+               FontWeight="Bold"/>
+
+                            <Button Style="{StaticResource SideMenuButtonStyle}"
+            Content="Danh sách nhân viên"
+            Command="{Binding NhanSu.LoadNV}"/>
+
+                            <Button Style="{StaticResource SideMenuButtonStyle}"
+            Content="Tài khoản &amp; Phân quyền"
+            Command="{Binding NhanSu.LoadTK}"/>
+
+                            <Button Style="{StaticResource SideMenuButtonStyle}"
+            Content="Quản lý chức vụ"
+            Command="{Binding NhanSu.LoadCV}"/>
+
+                            <Separator Background="#34495E" Margin="10"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Column="1" Background="#F4F6F9" Padding="10">
+                        <ContentControl Content="{Binding NhanSu.CurrentView}"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+        <Border Grid.Row="2" Background="#ECF0F1" BorderBrush="#BDC3C7" BorderThickness="0,1,0,0">
+            <Grid Margin="10,0">
+                <TextBlock Text="Hệ thống vận hành ổn định" Foreground="#7F8C8D" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="11"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

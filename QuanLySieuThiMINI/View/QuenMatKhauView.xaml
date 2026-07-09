@@ -1,0 +1,47 @@
+﻿<Window x:Class="QuanLySieuThiMINI.View.QuenMatKhauView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quên mật khẩu" Height="500" Width="450"
+        WindowStartupLocation="CenterScreen"
+        Background="#F4F6F8">
+
+    <Grid>
+        <Border Background="White" CornerRadius="12" Padding="30" Margin="20"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Width="380">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="#D3D3D3" Opacity="0.5"/>
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock Text="ĐẶT LẠI MẬT KHẨU" FontSize="24" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <TextBlock Text="Vui lòng nhập email để nhận mã xác nhận" FontSize="13" Foreground="#7F8C8D" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+                <TextBlock Text="Email của bạn" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
+                <Grid Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="110"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Height="35" VerticalContentAlignment="Center" Padding="5,0" FontSize="14"/>
+                    <Button Grid.Column="1" Content="Nhận mã OTP" Background="#ECF0F1" Foreground="#2980B9" FontWeight="Bold" BorderThickness="0" Margin="10,0,0,0"/>
+                </Grid>
+
+                <TextBlock Text="Mã OTP" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
+                <TextBox Height="35" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,0,15" FontSize="14" HorizontalAlignment="Left" Width="150"/>
+
+                <TextBlock Text="Mật khẩu mới" FontWeight="SemiBold" Foreground="#34495E" Margin="0,0,0,5"/>
+                <PasswordBox Height="35" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,0,30" FontSize="14"/>
+
+                <Button Content="XÁC NHẬN VÀ ĐĂNG NHẬP" Height="45" Background="#2980B9" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="6"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

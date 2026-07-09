@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="QuanLySieuThiMINI.View.UC_TaiKhoan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" ItemsSource="{Binding dstk}" SelectedItem="{Binding SelectedTK}" AutoGenerateColumns="False" CanUserAddRows="False" BorderBrush="#16A085" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="User Name" Width="*" Binding="{Binding TenDangNhap}"/>
+                <DataGridTextColumn Header="Mã NV" Width="100" Binding="{Binding MaNV}"/>
+                <DataGridTextColumn Header="Email" Width="2*" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Vai Trò" Width="120" Binding="{Binding VaiTro}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="1" Background="#E8F8F5" Padding="15" CornerRadius="8">
+            <StackPanel>
+                <TextBlock Text="THIẾT LẬP TÀI KHOẢN" FontWeight="Bold" Foreground="#16A085" Margin="0,0,0,10"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Margin="0,0,10,0">
+                        <TextBlock Text="Tên đăng nhập (*):" FontWeight="Bold" Foreground="#E74C3C"/>
+                        <TextBox Height="30" Text="{Binding SelectedTK.TenDangNhap, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Mật khẩu (*):"/>
+                        <TextBox Height="30" Text="{Binding SelectedTK.MatKhau, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Mã nhân viên sở hữu (*):" FontWeight="Bold" Foreground="#E74C3C"/>
+                        <TextBox Height="30" Text="{Binding SelectedTK.MaNV, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Text="Email:"/>
+                        <TextBox Height="30" Text="{Binding SelectedTK.Email, UpdateSourceTrigger=PropertyChanged}" Margin="0,5"/>
+
+                        <TextBlock Text="Vai trò:"/>
+                        <ComboBox Height="30" Margin="0,5" ItemsSource="{Binding dscv}" DisplayMemberPath="TenChucVu"  
+                          SelectedValuePath="TenChucVu" SelectedValue="{Binding SelectedTK.VaiTro, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                    <Button Content="❌ Xóa Tài Khoản" Command="{Binding DeleteCommand}" Width="130" Height="35" Background="#E74C3C" Foreground="White" BorderThickness="0" Margin="0,0,10,0"/>
+                    <Button Content="💾 Lưu thay đổi" Command="{Binding SaveCommand}" Width="150" Height="35" Background="#16A085" Foreground="White" BorderThickness="0"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

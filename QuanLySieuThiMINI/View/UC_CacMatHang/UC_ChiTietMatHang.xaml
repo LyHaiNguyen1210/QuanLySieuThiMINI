@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="QuanLySieuThiMINI.View.UC_ChiTietMatHang"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:QuanLySieuThiMINI.ViewModel"
+             Background="White">
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Text="" Background="Transparent" Height="35" VerticalContentAlignment="Center" Padding="10,0" BorderBrush="#006699" BorderThickness="1" Margin="0,0,0,10"/>
+
+        <DataGrid ItemsSource="{Binding dsMH}" SelectedItem="{Binding SelectedMH}" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="Column" 
+                  BorderBrush="#006699" BorderThickness="1" Background="White" RowBackground="White" AlternatingRowBackground="#F4F6F8" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã" Width="60" Binding="{Binding MaMH}"/>
+                <DataGridTextColumn Header="Tên" Width="3*" Binding="{Binding TenMH}"/>
+                <DataGridTextColumn Header="Số Lượng" Width="80" Binding="{Binding SoLuong}"/>
+                <DataGridTextColumn Header="Đơn Vị Tính" Width="100" Binding="{Binding DonViTinh}"/>
+                <DataGridTextColumn Header="Đơn Giá" Width="100" Binding="{Binding DonGia}"/>
+                <DataGridTextColumn Header="VAT" Width="60" Binding="{Binding VAT}"/>
+                <DataGridTextColumn Header="VTQ" Width="60" Binding="{Binding ViTriQuay}"/>
+                <DataGridTextColumn Header="Barcode" Width="120" Binding="{Binding BarCode}"/>
+                <DataGridTextColumn Header="Nhóm" Width="1.5*" Binding="{Binding Nhom}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Row="2" Background="#EAF8F9" CornerRadius="8" Padding="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                    <TextBlock Text="Thông tin mặt hàng" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Tên" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="1" Text="{Binding SelectedMH.TenMH}" Height="30" VerticalContentAlignment="Center" Padding="5,0"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Số lượng" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="1" Text="{Binding SelectedMH.SoLuong}" Height="30" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,15,0"/>
+
+                        <TextBlock Grid.Column="2" Text="Giá nhập" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="3" Text="{Binding SelectedMH.GiaNhap}" Height="30" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,15,0"/>
+
+                        <TextBlock Grid.Column="4" Text="VAT" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="5" Text="{Binding SelectedMH.VAT}" Height="30" VerticalContentAlignment="Center" Padding="5,0"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Vị trí" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="1" Text="{Binding SelectedMH.ViTriQuay}" Height="30" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,15,0"/>
+
+                        <TextBlock Grid.Column="2" Text="Đơn giá" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="3" Text="{Binding SelectedMH.DonGia}" Height="30" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,15,0"/>
+
+                        <TextBlock Grid.Column="4" Text="ĐV" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="5" Text="{Binding SelectedMH.DonViTinh}" Height="30" VerticalContentAlignment="Center" Padding="5,0"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Barcode" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox Grid.Column="1" Text="{Binding SelectedMH.BarCode}" Height="30" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,5,0"/>
+                        <Button Grid.Column="2" Content="|||" Background="#ECF0F1" BorderBrush="#BDC3C7" Cursor="Hand"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="Chọn" Background="#006699" Foreground="White" BorderThickness="0" Margin="0,0,5,0" Cursor="Hand"/>
+                        <TextBox Grid.Column="1" Text="" Height="30" VerticalContentAlignment="Center" Padding="5,0" Margin="0,0,10,0"/>
+                        <TextBox Grid.Column="2" Text="" Height="30" VerticalContentAlignment="Center" Padding="5,0" Foreground="Gray"/>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                        <Button Content="➕ Thêm" Width="100" Height="40" Background="#3498DB" Foreground="White" FontWeight="Bold" BorderThickness="0" Margin="0,0,10,0" Cursor="Hand"/>
+                        <Button Content="❌ Xóa" Width="100" Height="40" Background="#E74C3C" Foreground="White" FontWeight="Bold" BorderThickness="0" Margin="0,0,10,0" Cursor="Hand"/>
+                        <Button Content="🔄 Cập nhật thông tin" Width="200" Height="40" Background="#006699" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <Border Width="150" Height="150" Background="White" BorderBrush="#BDC3C7" BorderThickness="1" Margin="0,0,0,10">
+                        <Image Stretch="Uniform"/>
+                    </Border>
+                    <Button Content="Chọn ảnh" Height="35" Background="#006699" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
